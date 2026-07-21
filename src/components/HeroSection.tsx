@@ -12,20 +12,24 @@ export function HeroSection() {
   useEffect(() => {
     let frameId = 0;
 
-    const updateHeroPosition = () => {
-      const lift = Math.min(window.scrollY * 0.6, window.innerHeight * 0.6);
-      heroRef.current?.style.setProperty("--hero-lift", `${-lift}px`);
+    const updateParallax = () => {
+      const hero = heroRef.current;
+      if (!hero) return;
+      const distance = Math.min(Math.max(-hero.getBoundingClientRect().top, 0), hero.offsetHeight);
+      hero.style.setProperty("--background-parallax", `${distance * 0.35}px`);
       frameId = 0;
     };
 
     const handleScroll = () => {
-      if (!frameId) frameId = window.requestAnimationFrame(updateHeroPosition);
+      if (!frameId) frameId = window.requestAnimationFrame(updateParallax);
     };
 
-    updateHeroPosition();
+    updateParallax();
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
       if (frameId) window.cancelAnimationFrame(frameId);
     };
   }, []);

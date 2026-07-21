@@ -1,0 +1,61 @@
+.stage {
+  --services-reveal: 100%;
+  --hero-scroll: 0vh;
+  --services-lift: 12vh;
+  position: relative;
+  height: 200svh;
+  background: #071a2f;
+}
+
+.frame {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.heroLayer,
+.servicesLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.heroLayer {
+  z-index: 1;
+  bottom: -24vh;
+  will-change: transform;
+  transform: translate3d(0, var(--hero-scroll), 0);
+}
+
+.heroLayer > section {
+  height: 124svh;
+}
+
+.servicesLayer {
+  z-index: 2;
+  overflow: hidden;
+  clip-path: inset(var(--services-reveal) 0 0 0);
+  will-change: clip-path;
+}
+
+.servicesMotion {
+  height: 100%;
+  will-change: transform;
+  transform: translate3d(0, var(--services-lift), 0);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .stage {
+    --hero-scroll: 0vh;
+    --services-lift: 0vh;
+    height: auto;
+  }
+  .frame { position: relative; height: auto; overflow: visible; }
+  .heroLayer, .servicesLayer { position: relative; }
+  .heroLayer { bottom: auto; transform: none; }
+  .heroLayer > section { height: 100svh; }
+  .servicesLayer { clip-path: none; }
+  .servicesMotion { transform: none; }
+}

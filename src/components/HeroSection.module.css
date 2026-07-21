@@ -1,7 +1,6 @@
 .hero {
-  --hero-lift: 0px;
-  position: sticky;
-  top: 0;
+  --background-parallax: 0px;
+  position: relative;
   z-index: 0;
   isolation: isolate;
   display: flex;
@@ -10,19 +9,15 @@
   min-height: 600px;
   align-items: flex-start;
   overflow: hidden;
-  will-change: transform;
-  transform: translate3d(0, var(--hero-lift), 0);
   padding-top: 5rem;
   background: #071a2f;
 }
 
 .backgroundLayer {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform: scale(1.03);
+  inset: -10% 0 -40%;
+  will-change: transform;
+  transform: translate3d(0, var(--background-parallax), 0) scale(1.03);
 }
 
 .backgroundImage {
@@ -201,8 +196,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero {
-    transform: none;
+    --background-parallax: 0px;
   }
+
 
 
   .floatPipe,

@@ -8,8 +8,6 @@
 
 
 .carousel {
-    --reveal-scale: 1.4;
-    --reveal-shift: 18vh;
   position: relative;
   isolation: isolate;
   width: 100%;
@@ -37,9 +35,6 @@
 .parallaxLayer {
   position: absolute;
   inset: 0;
-  will-change: transform;
-  transform: translate3d(0, var(--reveal-shift), 0) scale(var(--reveal-scale));
-  transform-origin: center;
 }
 
 .serviceImage {
@@ -156,8 +151,6 @@
 
 @media (max-width: 700px) {
   .carousel {
-    --reveal-scale: 1.4;
-    --reveal-shift: 18vh;
     min-height: 560px;
   }
 
