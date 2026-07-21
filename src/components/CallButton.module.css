@@ -1,0 +1,104 @@
+.callButton {
+  display: inline-flex;
+  width: 7.75rem;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: #20a957;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  box-shadow: 0 14px 28px rgb(2 70 34 / 28%);
+  transition: width 500ms cubic-bezier(.22, 1, .36, 1), background-color 220ms ease, transform 220ms ease;
+}
+
+.callButton:hover,
+.callButton:focus-visible {
+  width: 10.5rem;
+  background: #178c48;
+  transform: translateY(-2px);
+}
+
+.callButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.phoneIcon {
+  width: 0;
+  height: 1.25rem;
+  opacity: 0;
+  transform: translateX(-14px) rotate(-12deg);
+  transition: width 460ms cubic-bezier(.22, 1, .36, 1), margin-right 460ms cubic-bezier(.22, 1, .36, 1), opacity 220ms ease 80ms, transform 460ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.phoneIcon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.callButton:hover .phoneIcon,
+.callButton:focus-visible .phoneIcon {
+  width: 1.25rem;
+  margin-right: 0.65rem;
+  opacity: 1;
+  transform: translateX(0) rotate(0);
+}
+
+.textWindow {
+  position: relative;
+  display: flex;
+  height: 1.25em;
+  overflow: hidden;
+  line-height: 1.25;
+}
+
+.outgoingText,
+.incomingText {
+  display: flex;
+}
+
+.incomingText {
+  position: absolute;
+  inset: 0;
+}
+
+.outgoingText span,
+.incomingText span {
+  display: block;
+  transition: transform 500ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.incomingText span {
+  transform: translateY(130%);
+}
+
+.callButton:hover .outgoingText span,
+.callButton:focus-visible .outgoingText span {
+  transform: translateY(-130%);
+}
+
+.callButton:hover .incomingText span,
+.callButton:focus-visible .incomingText span {
+  transform: translateY(0);
+}
+
+.outgoingText span:nth-child(2),
+.incomingText span:nth-child(2) { transition-delay: 60ms; }
+.outgoingText span:nth-child(3),
+.incomingText span:nth-child(3) { transition-delay: 120ms; }
+.outgoingText span:nth-child(4),
+.incomingText span:nth-child(4) { transition-delay: 180ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .callButton,
+  .phoneIcon,
+  .outgoingText span,
+  .incomingText span {
+    transition-duration: 0.01ms;
+    transition-delay: 0ms;
+  }
+}

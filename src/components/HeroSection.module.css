@@ -1,0 +1,212 @@
+.hero {
+  --hero-lift: 0px;
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  isolation: isolate;
+  display: flex;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  align-items: flex-start;
+  overflow: hidden;
+  will-change: transform;
+  transform: translate3d(0, var(--hero-lift), 0);
+  padding-top: 5rem;
+  background: #071a2f;
+}
+
+.backgroundLayer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: scale(1.03);
+}
+
+.backgroundImage {
+  object-fit: fill;
+  filter: blur(10px);
+}
+
+.horizontalOverlay,
+.verticalOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+.horizontalOverlay {
+  background: linear-gradient(
+    90deg,
+    rgb(4 20 38 / 96%) 0%,
+    rgb(4 20 38 / 83%) 42%,
+    rgb(4 20 38 / 20%) 76%,
+    rgb(4 20 38 / 12%) 100%
+  );
+}
+
+.verticalOverlay {
+  background: linear-gradient(0deg, rgb(4 20 38 / 50%), transparent 45%);
+}
+
+.pipe {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.whitePipe {
+  top: 0;
+  left: -25%;
+  width: 70vw;
+  transform: rotate(-24deg);
+}
+
+.copperPipe {
+  top: 23%;
+  right: 10%;
+  width: clamp(220px, 28vw, 430px);
+  transform: rotate(-30deg);
+}
+.adjustableWrench,
+.pipeWrench {
+  z-index: 11;
+}
+
+.adjustableWrench {
+  top: 11%;
+  right: 19%;
+  width: clamp(210px, 12vw, 390px);
+  transform: rotate(10deg);
+}
+
+.pipeWrench {
+  left: 7%;
+  width: clamp(230px, 27vw, 420px);
+  transform: rotate(20deg) scaleX(-1);
+}
+
+.pipeImage {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  filter: blur(5px);
+}
+.toolImage {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+}
+
+.floatPipe,
+.floatPipeReverse {
+  will-change: transform;
+  animation: float-pipe 6.5s ease-in-out infinite;
+}
+
+.floatPipeReverse {
+  animation-delay: -3.25s;
+  animation-direction: reverse;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 6rem 1.25rem;
+  transform: translateY(-2rem);
+}
+
+.contentInner {
+  max-width: 48rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.titleAccent {
+  display: block;
+  color: #48bfff;
+}
+
+.description {
+  max-width: 36rem;
+  margin: 1.5rem auto 0;
+  color: #e2e8f0;
+  font-size: 1.125rem;
+  line-height: 2rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+
+@keyframes float-pipe {
+  0%,
+  100% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 18px, 0);
+  }
+}
+
+@media (min-width: 640px) {
+  .content {
+    padding-top: 7rem;
+    padding-inline: 2rem;
+  }
+
+  .title {
+    font-size: 3.75rem;
+  }
+
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .actions {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    padding-top: 8rem;
+    padding-inline: 2.5rem;
+  }
+
+  .title {
+    font-size: 4.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    transform: none;
+  }
+
+
+  .floatPipe,
+  .floatPipeReverse {
+    animation: none;
+  }
+}
