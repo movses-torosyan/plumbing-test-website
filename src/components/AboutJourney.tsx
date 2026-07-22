@@ -21,6 +21,8 @@ function StickyAboutCards() {
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
+    const mobile = window.matchMedia("(max-width: 850px)").matches;
+    ScrollTrigger.config({ ignoreMobileResize: mobile });
     const elements = imageRefs.current.filter(Boolean) as HTMLDivElement[];
     if (!elements[0]) return;
     gsap.set(elements[0], { yPercent: 0, scale: 1, rotation: 0 });
@@ -32,20 +34,30 @@ function StickyAboutCards() {
         start: "top top",
         end: `+=${window.innerHeight * (elements.length - 1)}`,
         pin: true,
-        scrub: 0.55,
+        scrub: mobile ? 0.32 : 0.55,
         anticipatePin: 1,
       },
     });
 
     for (let index = 0; index < elements.length - 1; index += 1) {
-      timeline.to(elements[index], { scale: 0.72, rotation: index % 2 ? -4 : 4, duration: 1, ease: "none" }, index);
+      timeline.to(elements[index], {
+        scale: mobile ? 0.86 : 0.72,
+        rotation: mobile ? (index % 2 ? -1.5 : 1.5) : (index % 2 ? -4 : 4),
+        duration: 1,
+        ease: "none",
+      }, index);
       timeline.to(elements[index + 1], { yPercent: 0, duration: 1, ease: "none" }, index);
     }
 
-    const refreshTimeline = () => ScrollTrigger.refresh();
+    let refreshTimer = 0;
+    const refreshTimeline = () => {
+      window.clearTimeout(refreshTimer);
+      refreshTimer = window.setTimeout(() => ScrollTrigger.refresh(), 160);
+    };
     window.addEventListener("app-viewport-resize", refreshTimeline);
     return () => {
       window.removeEventListener("app-viewport-resize", refreshTimeline);
+      window.clearTimeout(refreshTimer);
       timeline.scrollTrigger?.kill();
     };
   }, { scope: container });

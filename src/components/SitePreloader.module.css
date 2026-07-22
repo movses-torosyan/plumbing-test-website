@@ -22,4 +22,8 @@
 @keyframes sheen { to { transform: translateX(100%); } }
 @keyframes glow-in { to { transform: translate(-50%,-50%) scale(1); } }
 @keyframes brand-in { to { opacity: 1; } }
+@media (max-width: 850px) {
+  .tool img { filter: drop-shadow(0 .65rem .55rem rgb(0 0 0 / 30%)); }
+  .glow { width: 18rem; height: 18rem; }
+}
 @media (prefers-reduced-motion: reduce) { .tool, .brand, .glow, .preloader::before { animation-duration: .01ms; animation-delay: 0ms; } .preloader { transition-duration: 180ms; } }

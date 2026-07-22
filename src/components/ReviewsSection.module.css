@@ -26,5 +26,6 @@
 }
 @media (max-width: 850px) {
   .section { height: var(--app-viewport-height, 100dvh); }
+  .glow { display: none; }
 }
 

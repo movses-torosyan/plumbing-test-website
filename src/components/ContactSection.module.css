@@ -35,6 +35,6 @@
 .submitRow button:hover i, .submitRow button:focus-visible i { width: 1.4rem; opacity: 1; transform: translateX(.3rem); }
 .submitRow p { margin: 0; color: #66db97; font-size: .78rem; line-height: 1.4; opacity: 0; transform: translateY(.5rem); transition: opacity 350ms ease, transform 350ms ease; }
 .submitRow p.successVisible { opacity: 1; transform: translateY(0); }
-@media (max-width: 850px) { .section { grid-template-columns: 1fr; padding-top: 7rem; } .info h1 { font-size: clamp(3rem, 16vw, 6rem); } }
+@media (max-width: 850px) { .section { grid-template-columns: 1fr; padding-top: 7rem; } .info h1 { font-size: clamp(3rem, 16vw, 6rem); } .form { backdrop-filter: none; background: rgb(10 31 49 / 88%); } }
 @media (max-width: 540px) { .twoColumns { grid-template-columns: 1fr; gap: 0; } .formHeading, .submitRow { align-items: flex-start; flex-direction: column; } .formHeading b { text-align: left; } }
 @media (prefers-reduced-motion: reduce) { .control label span, .submitRow button, .submitRow button i, .submitRow p, .rollOutgoing > span, .rollIncoming > span { transition-duration: .01ms; } }
