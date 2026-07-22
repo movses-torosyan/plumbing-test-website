@@ -18,6 +18,8 @@ export function HeroServicesTransition() {
     let autoScrollEndTimer = 0;
     let autoAnimationFrame = 0;
 
+    const getSettleDelay = () => window.matchMedia("(max-width: 850px)").matches ? 180 : 3000;
+
     const updateReveal = () => {
       const stage = stageRef.current;
       if (!stage) return;
@@ -75,8 +77,7 @@ export function HeroServicesTransition() {
       const startedAt = performance.now();
       const animate = (now: number) => {
         const elapsed = Math.min((now - startedAt) / duration, 1);
-        const eased = elapsed;
-        window.scrollTo(0, start + distance * eased);
+        window.scrollTo(0, start + distance * elapsed);
         if (elapsed < 1) autoAnimationFrame = requestAnimationFrame(animate);
       };
       autoAnimationFrame = requestAnimationFrame(animate);
@@ -96,19 +97,18 @@ export function HeroServicesTransition() {
       window.clearTimeout(settleTimer);
       window.dispatchEvent(new CustomEvent("navbar-auto-scroll", { detail: false }));
       updateReveal();
-      settleTimer = window.setTimeout(snapToNearestSection, 3000);
+      settleTimer = window.setTimeout(snapToNearestSection, getSettleDelay());
     };
 
     const cancelWithKeyboard = (event: KeyboardEvent) => {
-      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) {
-        cancelAutoScroll();
-      }
+      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) cancelAutoScroll();
     };
-const requestUpdate = () => {
+
+    const requestUpdate = () => {
       if (!frameId) frameId = window.requestAnimationFrame(updateReveal);
       if (autoScrolling) return;
       window.clearTimeout(settleTimer);
-      settleTimer = window.setTimeout(snapToNearestSection, 3000);
+      settleTimer = window.setTimeout(snapToNearestSection, getSettleDelay());
     };
 
     updateReveal();

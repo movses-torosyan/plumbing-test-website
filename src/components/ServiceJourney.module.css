@@ -23,4 +23,5 @@
   .panel { height: 100dvh; }
 }
 
+@media (max-width: 760px) { .stage { background: transparent; } }
 @media (prefers-reduced-motion: reduce) { .stage { height: auto; } .frame { position: relative; height: auto; overflow: visible; } .layer { position: relative; clip-path: none !important; } .motion { height: auto; transform: none !important; } }

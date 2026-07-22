@@ -138,6 +138,7 @@
   .whyMotion > section { height: 100dvh; }
 }
 
+@media (max-width: 850px) { .stage { background: transparent; } }
 @media (prefers-reduced-motion: reduce) {
   .stage {
     --hero-scroll: 0vh;
