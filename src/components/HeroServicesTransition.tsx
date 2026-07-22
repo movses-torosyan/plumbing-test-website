@@ -29,16 +29,6 @@ export function HeroServicesTransition() {
       const whyProgress = Math.min(Math.max((progress - 0.3) * 5, 0), 1);
       const locationsProgress = Math.min(Math.max((progress - 0.5) * 4, 0), 1);
       const reviewsProgress = Math.min(Math.max((progress - 0.75) * 4, 0), 1);
-
-      const revealOnce = (name: string, sectionProgress: number) => {
-        if (sectionProgress <= 0.08) return;
-        stage.querySelector(`[data-reveal-section="${name}"]`)?.setAttribute("data-visible", "true");
-      };
-
-      revealOnce("services", servicesProgress);
-      revealOnce("why", whyProgress);
-      revealOnce("locations", locationsProgress);
-      revealOnce("reviews", reviewsProgress);
       stage.style.setProperty("--services-reveal", `${(1 - servicesProgress) * 100}%`);
       stage.style.setProperty("--hero-scroll", `${servicesProgress * -22}vh`);
       stage.style.setProperty("--services-lift", `${(1 - servicesProgress) * 12}vh`);
@@ -139,16 +129,16 @@ const requestUpdate = () => {
       <div className={styles.frame}>
         <div className={styles.heroLayer}><HeroSection /></div>
         <div className={styles.servicesLayer}>
-          <div className={styles.servicesMotion} data-reveal-section="services"><ServicesSection /></div>
+          <div className={styles.servicesMotion}><ServicesSection /></div>
         </div>
         <div className={styles.whyLayer}>
-          <div className={styles.whyMotion} data-reveal-section="why"><WhyChooseUs /></div>
+          <div className={styles.whyMotion}><WhyChooseUs /></div>
         </div>
         <div className={styles.locationsLayer}>
-          <div className={styles.locationsMotion} data-reveal-section="locations"><LocationsSection /></div>
+          <div className={styles.locationsMotion}><LocationsSection /></div>
         </div>
         <div className={styles.reviewsLayer}>
-          <div className={styles.reviewsMotion} data-reveal-section="reviews"><ReviewsSection /></div>
+          <div className={styles.reviewsMotion}><ReviewsSection /></div>
         </div>
       </div>
     </div>
