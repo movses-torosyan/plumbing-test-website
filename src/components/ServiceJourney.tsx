@@ -98,8 +98,7 @@ export function ServiceJourney() {
       if (!frame) frame = requestAnimationFrame(update);
       if (autoScrolling) return;
       window.clearTimeout(settleTimer);
-      const settleDelay = window.matchMedia("(max-width: 850px)").matches ? 180 : 3000;
-      settleTimer = window.setTimeout(snapToNearestService, settleDelay);
+      settleTimer = window.setTimeout(snapToNearestService, 3000);
     };
     const cancelAutoScroll = () => {
       if (!autoScrolling) return;
@@ -109,8 +108,7 @@ export function ServiceJourney() {
       window.clearTimeout(settleTimer);
       window.dispatchEvent(new CustomEvent("navbar-auto-scroll", { detail: false }));
       update();
-      const settleDelay = window.matchMedia("(max-width: 850px)").matches ? 180 : 3000;
-      settleTimer = window.setTimeout(snapToNearestService, settleDelay);
+      settleTimer = window.setTimeout(snapToNearestService, 3000);
     };
     const cancelWithKeyboard = (event: KeyboardEvent) => {
       if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) cancelAutoScroll();

@@ -18,7 +18,7 @@ export function HeroServicesTransition() {
     let autoScrollEndTimer = 0;
     let autoAnimationFrame = 0;
 
-    const getSettleDelay = () => window.matchMedia("(max-width: 850px)").matches ? 180 : 3000;
+    const getSettleDelay = () => 3000;
 
     const updateReveal = () => {
       const stage = stageRef.current;

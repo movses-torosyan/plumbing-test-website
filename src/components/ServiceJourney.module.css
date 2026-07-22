@@ -23,5 +23,9 @@
   .panel { height: 100dvh; }
 }
 
-@media (max-width: 760px) { .stage { background: transparent; } }
+@media (max-width: 760px) {
+  .stage { background: #03101e; }
+  .frame { min-height: 100dvh; background: #03101e; }
+  .layer { inset: -2px 0; }
+}
 @media (prefers-reduced-motion: reduce) { .stage { height: auto; } .frame { position: relative; height: auto; overflow: visible; } .layer { position: relative; clip-path: none !important; } .motion { height: auto; transform: none !important; } }
