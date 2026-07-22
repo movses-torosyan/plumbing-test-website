@@ -108,10 +108,10 @@
   animation: hero-copy-rise 900ms cubic-bezier(.22, 1, .36, 1) forwards;
 }
 
-.trustLabel { animation-delay: 2.55s; }
-.title { animation-delay: 2.68s; }
-.description { animation-delay: 2.82s; }
-.actions { animation-delay: 2.96s; }
+.trustLabel { animation-delay: .45s; }
+.title { animation-delay: .58s; }
+.description { animation-delay: .72s; }
+.actions { animation-delay: .86s; }
 
 .trustLabel {
   display: inline-flex;

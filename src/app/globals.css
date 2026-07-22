@@ -30,7 +30,8 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { overflow-x: clip; scroll-behavior: smooth; }
+body { overflow-x: clip; }
 ::selection { background: #42b9ff; color: #071a2f; }
 a,
 button,

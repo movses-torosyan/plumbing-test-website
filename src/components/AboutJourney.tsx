@@ -57,11 +57,6 @@ function StickyAboutCards() {
         <p className={styles.eyebrow}>About your local plumbing team</p>
         <h1>Built on trust.<br />Proven in every detail.</h1>
         <p className={styles.lead}>We bring skilled people, precise workmanship, and honest communication into every home. From the first call to the final inspection, our work is designed to feel calm, clear, and dependable.</p>
-        <div className={styles.values}>
-          <span><b>01</b> Licensed professionals</span>
-          <span><b>02</b> Upfront recommendations</span>
-          <span><b>03</b> Respectful, clean service</span>
-        </div>
       </div>
       <div className={styles.deck}>
         {cards.map((card, index) => (
