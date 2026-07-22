@@ -278,7 +278,7 @@
   }
 }
 @media (max-width: 760px) {
-  .hero { height: 100dvh; }
+  .hero { height: var(--app-viewport-height, 100dvh); }
 }
 
 @media (prefers-reduced-motion: reduce) {

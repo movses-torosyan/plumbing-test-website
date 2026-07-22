@@ -54,7 +54,7 @@ export function ServiceJourney() {
       const stage = stageRef.current;
       if (!stage) return;
       const rect = stage.getBoundingClientRect();
-      const distance = Math.max(stage.offsetHeight - window.innerHeight, 1);
+      const distance = Math.max(stage.offsetHeight - (window.visualViewport?.height ?? window.innerHeight), 1);
       const progress = Math.min(Math.max(-rect.top / distance, 0), 1);
       for (let index = 1; index < services.length; index += 1) {
         const local = Math.min(Math.max((progress - (index - 1) / (services.length - 1)) * (services.length - 1), 0), 1);
@@ -68,7 +68,7 @@ export function ServiceJourney() {
       const stage = stageRef.current;
       if (!stage || autoScrolling) return;
       const rect = stage.getBoundingClientRect();
-      const distance = Math.max(stage.offsetHeight - window.innerHeight, 1);
+      const distance = Math.max(stage.offsetHeight - (window.visualViewport?.height ?? window.innerHeight), 1);
       const progress = Math.min(Math.max(-rect.top / distance, 0), 1);
       if (progress <= 0 || progress >= 1) return;
       const nearest = Math.round(progress * (services.length - 1)) / (services.length - 1);
@@ -117,6 +117,7 @@ export function ServiceJourney() {
     update();
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
+    window.addEventListener("app-viewport-resize", requestUpdate);
     window.addEventListener("wheel", cancelAutoScroll, { passive: true });
     window.addEventListener("touchstart", cancelAutoScroll, { passive: true });
     window.addEventListener("pointerdown", cancelAutoScroll, { passive: true });
@@ -124,6 +125,7 @@ export function ServiceJourney() {
     return () => {
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
+      window.removeEventListener("app-viewport-resize", requestUpdate);
       window.removeEventListener("wheel", cancelAutoScroll);
       window.removeEventListener("touchstart", cancelAutoScroll);
       window.removeEventListener("pointerdown", cancelAutoScroll);

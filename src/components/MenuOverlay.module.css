@@ -20,8 +20,8 @@ a.active .roll b, a:hover .roll b, a:focus-visible .roll b { transform: translat
 .visual > span { position: absolute; z-index: 2; right: 1.4rem; bottom: 1.2rem; font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 @media (max-width: 800px) { .inner { grid-template-columns: 1fr; padding: 6.5rem 1.25rem 1.25rem; } .links { z-index: 2; } .visual { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .28; } .roll { font-size: clamp(2.1rem, 11vw, 4rem); } }
 @media (max-width: 800px) {
-  .inner { min-height: 100dvh; }
-  .visual { height: 100dvh; }
+  .inner { min-height: var(--app-viewport-height, 100dvh); }
+  .visual { height: var(--app-viewport-height, 100dvh); }
 }
 
 @media (prefers-reduced-motion: reduce) { .overlay, .roll i, .roll b, .visual img { transition-duration: .01ms; } }

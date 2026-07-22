@@ -25,7 +25,7 @@ export function HeroServicesTransition() {
       if (!stage) return;
 
       const rect = stage.getBoundingClientRect();
-      const scrollDistance = Math.max(stage.offsetHeight - window.innerHeight, 1);
+      const scrollDistance = Math.max(stage.offsetHeight - (window.visualViewport?.height ?? window.innerHeight), 1);
       const progress = Math.min(Math.max(-rect.top / scrollDistance, 0), 1);
       const servicesProgress = Math.min(progress * 4, 1);
       const whyProgress = Math.min(Math.max((progress - 0.3) * 5, 0), 1);
@@ -60,7 +60,7 @@ export function HeroServicesTransition() {
       if (!stage || autoScrolling) return;
 
       const rect = stage.getBoundingClientRect();
-      const scrollDistance = Math.max(stage.offsetHeight - window.innerHeight, 1);
+      const scrollDistance = Math.max(stage.offsetHeight - (window.visualViewport?.height ?? window.innerHeight), 1);
       const progress = Math.min(Math.max(-rect.top / scrollDistance, 0), 1);
       if (progress <= 0 || progress >= 1) return;
 
@@ -114,6 +114,7 @@ export function HeroServicesTransition() {
     updateReveal();
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
+    window.addEventListener("app-viewport-resize", requestUpdate);
     window.addEventListener("wheel", cancelAutoScroll, { passive: true });
     window.addEventListener("touchstart", cancelAutoScroll, { passive: true });
     window.addEventListener("pointerdown", cancelAutoScroll, { passive: true });
@@ -122,6 +123,7 @@ export function HeroServicesTransition() {
     return () => {
       window.removeEventListener("scroll", requestUpdate);
       window.removeEventListener("resize", requestUpdate);
+      window.removeEventListener("app-viewport-resize", requestUpdate);
       window.removeEventListener("wheel", cancelAutoScroll);
       window.removeEventListener("touchstart", cancelAutoScroll);
       window.removeEventListener("pointerdown", cancelAutoScroll);

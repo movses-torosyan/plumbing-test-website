@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SitePreloader } from "@/components/SitePreloader";
+import { MobileViewportSync } from "@/components/MobileViewportSync";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full"><SitePreloader />{children}</body>
+      <body className="min-h-full"><MobileViewportSync /><SitePreloader />{children}</body>
     </html>
   );
 }

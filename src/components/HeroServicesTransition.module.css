@@ -130,17 +130,17 @@
 .whyMotion article:nth-of-type(3),
 .reviewsMotion article:nth-of-type(3) { transition-delay: 180ms; }
 @media (max-width: 850px) {
-  .frame { height: 100dvh; }
-  .heroLayer > section { height: 124dvh; }
+  .frame { height: var(--app-viewport-height, 100dvh); }
+  .heroLayer > section { height: calc(var(--app-viewport-height, 100dvh) + 24dvh); }
   .servicesMotion,
   .whyMotion,
-  .locationsMotion { height: 118dvh; }
-  .whyMotion > section { height: 100dvh; }
+  .locationsMotion { height: calc(var(--app-viewport-height, 100dvh) + 18dvh); }
+  .whyMotion > section { height: var(--app-viewport-height, 100dvh); }
 }
 
 @media (max-width: 850px) {
   .stage { background: #071a2f; }
-  .frame { min-height: 100dvh; background: #071a2f; }
+  .frame { min-height: var(--app-viewport-height, 100dvh); background: #071a2f; }
   .heroLayer,
   .servicesLayer,
   .whyLayer,

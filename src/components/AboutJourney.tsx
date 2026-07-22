@@ -42,7 +42,13 @@ function StickyAboutCards() {
       timeline.to(elements[index], { scale: 0.72, rotation: index % 2 ? -4 : 4, duration: 1, ease: "none" }, index);
       timeline.to(elements[index + 1], { yPercent: 0, duration: 1, ease: "none" }, index);
     }
-    return () => timeline.scrollTrigger?.kill();
+
+    const refreshTimeline = () => ScrollTrigger.refresh();
+    window.addEventListener("app-viewport-resize", refreshTimeline);
+    return () => {
+      window.removeEventListener("app-viewport-resize", refreshTimeline);
+      timeline.scrollTrigger?.kill();
+    };
   }, { scope: container });
 
   return (

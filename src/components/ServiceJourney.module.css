@@ -18,14 +18,14 @@
 .counter { position: absolute; z-index: 2; right: 2rem; bottom: 1.5rem; font-size: .7rem; font-weight: 850; letter-spacing: .18em; }
 @media (max-width: 760px) { .background { object-position: 72% center; } .content { grid-template-columns: 1fr; align-content: end; padding-top: 6rem; gap: 1.5rem; } .intro h1 { font-size: clamp(2.8rem, 14vw, 5rem); } .list { padding-block: .6rem; } .list li { padding: .48rem 0; } .counter { display: none; } }
 @media (max-width: 760px) {
-  .frame { height: 100dvh; }
-  .motion { height: 112dvh; }
-  .panel { height: 100dvh; }
+  .frame { height: var(--app-viewport-height, 100dvh); }
+  .motion { height: calc(var(--app-viewport-height, 100dvh) + 12dvh); }
+  .panel { height: var(--app-viewport-height, 100dvh); }
 }
 
 @media (max-width: 760px) {
   .stage { background: #03101e; }
-  .frame { min-height: 100dvh; background: #03101e; }
+  .frame { min-height: var(--app-viewport-height, 100dvh); background: #03101e; }
   .layer { inset: -2px 0; }
 }
 @media (prefers-reduced-motion: reduce) { .stage { height: auto; } .frame { position: relative; height: auto; overflow: visible; } .layer { position: relative; clip-path: none !important; } .motion { height: auto; transform: none !important; } }

@@ -25,7 +25,7 @@ export function Footer() {
     const update = () => {
       frame = 0;
       const rect = footer.getBoundingClientRect();
-      const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+      const progress = Math.max(0, Math.min(1, ((window.visualViewport?.height ?? window.innerHeight) - rect.top) / ((window.visualViewport?.height ?? window.innerHeight) + rect.height)));
       footer.style.setProperty("--footer-shift", `${(0.5 - progress) * 28}px`);
     };
     const onScroll = () => {
@@ -35,9 +35,11 @@ export function Footer() {
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    window.addEventListener("app-viewport-resize", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("app-viewport-resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);

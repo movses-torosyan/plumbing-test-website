@@ -28,9 +28,11 @@ export function HeroSection() {
     updateParallax();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
+    window.addEventListener("app-viewport-resize", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("app-viewport-resize", handleScroll);
       if (frameId) window.cancelAnimationFrame(frameId);
     };
   }, []);

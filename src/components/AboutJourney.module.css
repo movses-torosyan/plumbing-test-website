@@ -34,8 +34,8 @@
   .lead { font-size: .92rem; }
 }
 @media (max-width: 850px) {
-  .stickyCards { height: 100dvh; }
-  .deck { height: calc(100dvh - 7.25rem); }
+  .stickyCards { height: var(--app-viewport-height, 100dvh); }
+  .deck { height: calc(var(--app-viewport-height, 100dvh) - 7.25rem); }
 }
 
 @media (prefers-reduced-motion: reduce) { .deck { overflow: hidden; } .card:not(:first-child) { display: none; } }

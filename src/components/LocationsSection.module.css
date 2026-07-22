@@ -30,6 +30,6 @@
 .area:nth-child(even) { padding-left: 1rem; border-left: 1px solid rgb(255 255 255 / 24%); }
 .area b { color: #ff595e; font-size: 0.66rem; }
 @media (max-width: 850px) {
-  .section { height: 100dvh; }
+  .section { height: var(--app-viewport-height, 100dvh); }
 }
 
