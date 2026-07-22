@@ -3,9 +3,8 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ReactLenis from "lenis/react";
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./AboutJourney.module.css";
 
 const cards = [
@@ -72,9 +71,14 @@ function StickyAboutCards() {
 }
 
 export function AboutJourney() {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      ScrollTrigger.refresh();
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  return <ReactLenis root><section id="about" className={styles.about}><StickyAboutCards /></section></ReactLenis>;
+  return <section id="about" className={styles.about}><StickyAboutCards /></section>;
 }

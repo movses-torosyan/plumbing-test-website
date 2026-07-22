@@ -50,7 +50,10 @@ export function SitePreloader() {
       setVisible(true);
       setPhase("entering");
       window.requestAnimationFrame(() => window.requestAnimationFrame(() => setPhase("showing")));
-      timers.current.push(window.setTimeout(() => router.push(destination), 850));
+      timers.current.push(window.setTimeout(() => {
+        window.scrollTo(0, 0);
+        router.push(destination, { scroll: true });
+      }, 850));
       finish(1350, 2200);
     };
 
