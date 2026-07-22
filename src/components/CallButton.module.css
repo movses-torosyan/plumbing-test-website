@@ -1,6 +1,6 @@
 .callButton {
   display: inline-flex;
-  width: 7.75rem;
+  width: 14.5rem;
   min-height: 3.5rem;
   align-items: center;
   justify-content: center;
@@ -10,14 +10,14 @@
   color: #fff;
   font-size: 1rem;
   font-weight: 850;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.055em;
   box-shadow: 0 14px 28px rgb(2 70 34 / 28%);
   transition: width 500ms cubic-bezier(.22, 1, .36, 1), background-color 220ms ease, transform 220ms ease;
 }
 
 .callButton:hover,
 .callButton:focus-visible {
-  width: 10.5rem;
+  width: 17rem;
   background: #178c48;
   transform: translateY(-2px);
 }

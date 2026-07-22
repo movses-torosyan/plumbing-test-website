@@ -9,6 +9,7 @@ import styles from "./HeroSection.module.css";
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
 
+
   useEffect(() => {
     let frameId = 0;
 
@@ -39,25 +40,7 @@ export function HeroSection() {
       <ParallaxBackground />
       <div className={styles.horizontalOverlay} />
       <div className={styles.verticalOverlay} />
-
-      <div className={`${styles.pipe} ${styles.whitePipe}`} aria-hidden="true">
-        <Image
-          src="/images/pipe-white.png"
-          alt=""
-          width={1254}
-          height={1254}
-          className={`${styles.pipeImage} ${styles.floatPipe}`}
-        />
-      </div>
-      <div className={`${styles.pipe} ${styles.copperPipe}`} aria-hidden="true">
-        <Image
-          src="/images/copper-pipe.png"
-          alt=""
-          width={1254}
-          height={1254}
-          className={`${styles.pipeImage} ${styles.floatPipeReverse}`}
-        />
-      </div>      <div className={`${styles.pipe} ${styles.adjustableWrench}`} aria-hidden="true">
+      <div className={`${styles.pipe} ${styles.adjustableWrench}`} aria-hidden="true">
         <Image
           src="/images/adjustable-wrench.png"
           alt=""
@@ -76,8 +59,13 @@ export function HeroSection() {
         />
       </div>
 
+
       <div className={styles.content}>
         <div className={styles.contentInner}>
+          <p className={styles.trustLabel}>
+            <span aria-hidden="true" />
+            24/7 licensed plumbing
+          </p>
           <h1 className={styles.title}>
             Reliable plumbing,
             <span className={styles.titleAccent}>right when you need it.</span>
@@ -90,7 +78,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }

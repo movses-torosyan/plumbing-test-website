@@ -17,6 +17,7 @@ export interface TextRevealProps {
   hoverColor?: string;
   direction?: "up" | "down";
   staticCharacters?: string;
+  active?: boolean;
   onClick?: (e: React.MouseEvent) => void;
 }
 
@@ -35,6 +36,7 @@ const TextReveal = React.memo(function TextReveal({
   hoverColor = "#b2c73a",
   direction = "up",
   staticCharacters = "",
+  active,
   onClick,
 }: TextRevealProps) {
   const [hovered, setHovered] = useState(false);
@@ -48,12 +50,13 @@ const TextReveal = React.memo(function TextReveal({
   }, [text]);
 
   const sign = direction === "up" ? 1 : -1;
+  const isHovered = active ?? hovered;
 
   const rootProps: Record<string, unknown> = {
     className: `inline-block relative no-underline font-extrabold uppercase tracking-tight overflow-hidden cursor-pointer select-none ${className}`.trim(),
     style: {
       fontSize,
-      color: hovered ? hoverColor : color,
+      color: isHovered ? hoverColor : color,
       transition: "color 0.35s ease",
       padding: "0.15em 0.4em",
       lineHeight: 1,
@@ -87,7 +90,7 @@ const TextReveal = React.memo(function TextReveal({
                 textShadow: isStatic ? "none" : `0 ${sign}em currentColor`,
                 transition: isStatic ? "none" : `transform ${duration}ms ${easing}`,
                 transitionDelay: isStatic ? "0ms" : `${i * staggerDelay}ms`,
-                transform: isStatic ? "translateY(0)" : hovered ? `translateY(${-sign}em)` : "translateY(0)",
+                transform: isStatic ? "translateY(0)" : isHovered ? `translateY(${-sign}em)` : "translateY(0)",
               }}
             >
               {char === " " ? "\u00A0" : char}

@@ -50,11 +50,47 @@
   background: linear-gradient(to bottom, rgb(2 10 18 / 8%) 25%, rgb(2 10 18 / 20%) 58%, rgb(2 10 18 / 88%) 100%);
 }
 
+.serviceInfo {
+  position: absolute;
+  z-index: 4;
+  top: clamp(6.5rem, 12vh, 8.5rem);
+  right: clamp(1.25rem, 3vw, 3.5rem);
+  width: min(22rem, 30vw);
+  padding-right: 1.25rem;
+  border-right: 1px solid rgb(255 255 255 / 60%);
+  color: #fff;
+  text-align: right;
+  text-shadow: 0 2px 20px rgb(0 0 0 / 45%);
+}
+
+.serviceInfoLabel {
+  margin: 0 0 0.55rem;
+  color: rgb(255 255 255 / 68%);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.serviceInfoTitle {
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.serviceInfoDescription {
+  margin: 0.7rem 0 0;
+  color: rgb(255 255 255 / 82%);
+  font-size: clamp(0.75rem, 0.9vw, 0.9rem);
+  line-height: 1.55;
+}
 .copy {
   position: absolute;
   z-index: 2;
   right: 0;
-  bottom: -0.035em;
+  bottom: clamp(1.1rem, 2.5vh, 2rem);
   left: 0;
   pointer-events: none;
   text-align: center;
@@ -64,36 +100,77 @@
 .servicesButton {
   position: absolute;
   z-index: 4;
-  top: 50%;
-  left: clamp(1rem, 3vw, 3rem);
-  border: 1px solid rgb(255 255 255 / 70%);
-  border-radius: 0;
-  background: rgb(5 20 34 / 38%);
+  top: 78%;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.75rem 0.6rem;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  box-shadow: none;
   color: #fff;
   font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 800;
   letter-spacing: 0.12em;
-  backdrop-filter: blur(9px);
-  transform: translateY(-50%);
-  transition: border-color 250ms ease, background-color 250ms ease;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.bracket {
+  display: inline-block;
+  transition: transform 420ms cubic-bezier(.22, 1, .36, 1), color 300ms ease;
+}
+
+
+.servicesText {
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.buttonArrow {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-0.6rem);
+  transition: max-width 420ms cubic-bezier(.22, 1, .36, 1), opacity 250ms ease, transform 420ms cubic-bezier(.22, 1, .36, 1);
+}
+
+
+.servicesButton:hover .buttonArrow,
+.servicesButton:focus-visible .buttonArrow {
+  max-width: 2rem;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.servicesButton:hover .bracket:first-child,
+.servicesButton:focus-visible .bracket:first-child {
+  transform: translateX(-0.3rem);
+}
+
+.servicesButton:hover .bracket:last-child,
+.servicesButton:focus-visible .bracket:last-child {
+  transform: translateX(0.3rem);
 }
 
 .servicesButton:hover,
 .servicesButton:focus-visible {
-  border-color: #48bfff;
-  background: rgb(5 20 34 / 72%);
+  color: #fff;
 }
 
-.servicesButton:focus-visible {
-  outline: 3px solid #48bfff;
-  outline-offset: 4px;
-}
 .title {
   margin: 0;
   color: rgb(255 255 255 / 92%);
   font-family: inherit;
-  font-size: clamp(4rem, 15vw, 14rem);
+  font-size: clamp(3.25rem, 8vw, 7.25rem);
   font-weight: 900;
-  line-height: 0.72;
+  line-height: 0.88;
   letter-spacing: -0.075em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -150,10 +227,22 @@
 }
 
 @media (max-width: 700px) {
+  .serviceImage {
+    object-position: 72% center;
+  }
   .carousel {
     min-height: 560px;
   }
 
+  .serviceInfo {
+    top: 6rem;
+    right: 1rem;
+    width: min(17rem, 62vw);
+  }
+
+  .serviceInfoDescription {
+    display: none;
+  }
   .arrow {
     width: 3.25rem;
     height: 3.25rem;
@@ -161,9 +250,13 @@
 
 
   .title {
-    font-size: clamp(3.25rem, 16vw, 6rem);
+    font-size: clamp(3rem, 13vw, 5.25rem);
     white-space: normal;
   }
+}
+
+@media (max-width: 700px) {
+  .carousel { height: 100dvh; }
 }
 
 @media (prefers-reduced-motion: reduce) {

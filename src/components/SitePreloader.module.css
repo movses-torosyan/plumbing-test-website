@@ -1,0 +1,25 @@
+.preloader { position: fixed; inset: 0; z-index: 9999; display: grid; place-content: center; overflow: hidden; background: #03101e; color: #fff; transform: translate3d(0,0,0); transition: transform 780ms cubic-bezier(.76,0,.24,1), border-radius 780ms cubic-bezier(.76,0,.24,1); }
+.preloader::before { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 20%, rgb(67 186 255 / 8%) 48%, transparent 76%); transform: translateX(-100%); animation: sheen 1200ms ease 250ms forwards; }
+.entering { transform: translate3d(0,-105%,0); }
+.showing { transform: translate3d(0,0,0); }
+.closing { border-radius: 50% 50% 0 0 / 7% 7% 0 0; transform: translate3d(0,110%,0); }
+.glow { position: absolute; top: 50%; left: 50%; width: 26rem; height: 26rem; border-radius: 50%; background: radial-gradient(circle, rgb(67 186 255 / 15%), transparent 68%); transform: translate(-50%,-50%) scale(.6); animation: glow-in 1100ms ease forwards; }
+.mark { position: relative; width: min(92vw, 42rem); height: min(60vh, 36rem); margin-inline: auto; }
+.tool { position: absolute; top: 50%; left: 50%; width: clamp(13rem, 22vw, 20rem); height: clamp(22rem, 48vh, 34rem); transform-origin: 50% 50%; }
+.tool img { object-fit: contain; filter: drop-shadow(0 1.2rem 1.1rem rgb(0 0 0 / 42%)); }
+.pipeWrench { transform: translate(-115%,-50%) rotate(0deg); animation: wrench-cross-left 1250ms cubic-bezier(.68,-.45,.25,1.35) 220ms forwards; }
+.spanner { transform: translate(15%,-50%) rotate(0deg); animation: wrench-cross-right 1250ms cubic-bezier(.68,-.45,.25,1.35) 220ms forwards; }
+.brand { position: relative; margin-bottom: 1.25rem; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 900; letter-spacing: .08em; text-align: center; text-transform: uppercase; opacity: 0; animation: brand-in 500ms ease 120ms forwards; }
+.brand b { color: #43baff; }
+.navigation .mark { display: none; }
+.navigation .brand { margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); animation-delay: 500ms; }
+.navigation .pipeWrench { animation-delay: 970ms; }
+.navigation .spanner { animation-delay: 970ms; }
+.navigation .brand { animation-delay: 850ms; }
+.navigation .glow { animation-delay: 780ms; }
+@keyframes wrench-cross-left { 0% { transform: translate(-115%,-50%) rotate(0deg); } 55% { transform: translate(-78%,-50%) rotate(0deg); } 100% { transform: translate(-50%,-50%) rotate(45deg); } }
+@keyframes wrench-cross-right { 0% { transform: translate(15%,-50%) rotate(0deg); } 55% { transform: translate(-22%,-50%) rotate(0deg); } 100% { transform: translate(-50%,-50%) rotate(-45deg); } }
+@keyframes sheen { to { transform: translateX(100%); } }
+@keyframes glow-in { to { transform: translate(-50%,-50%) scale(1); } }
+@keyframes brand-in { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .tool, .brand, .glow, .preloader::before { animation-duration: .01ms; animation-delay: 0ms; } .preloader { transition-duration: 180ms; } }

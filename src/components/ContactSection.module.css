@@ -1,0 +1,40 @@
+.section { display: grid; grid-template-columns: minmax(20rem, .8fr) minmax(0, 1.2fr); min-height: 100svh; padding: clamp(7rem, 11vw, 10rem) clamp(1.3rem, 6vw, 6rem) 4rem; gap: clamp(3rem, 9vw, 10rem); background: radial-gradient(circle at 10% 85%, rgb(32 169 87 / 13%), transparent 30%), #03101e; color: #fff; }
+.info { align-self: center; }
+.inquire { margin: 0 0 .75rem; color: #43baff; font-size: clamp(1.35rem, 2vw, 2rem); font-weight: 950; line-height: 1; letter-spacing: .18em; text-transform: uppercase; }
+.eyebrow { margin: 0 0 1rem; color: #43baff; font-size: .7rem; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
+.info h1 { max-width: 8ch; margin: 0; font-size: clamp(3.5rem, 7vw, 8rem); font-weight: 950; line-height: .84; letter-spacing: -.045em; text-transform: uppercase; }
+.lead { max-width: 34rem; margin: 1.7rem 0 2rem; color: rgb(255 255 255 / 68%); font-size: clamp(.95rem, 1.3vw, 1.15rem); line-height: 1.7; }
+.info dl { display: grid; margin: 2.5rem 0 0; border-top: 1px solid rgb(255 255 255 / 18%); }
+.info dl div { display: grid; grid-template-columns: 8rem 1fr; padding: .8rem 0; border-bottom: 1px solid rgb(255 255 255 / 18%); }
+.info dt { color: #43baff; font-size: .65rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.info dd { margin: 0; color: rgb(255 255 255 / 72%); font-size: .82rem; }
+.form { align-self: center; padding: clamp(1.5rem, 4vw, 3.5rem); border: 1px solid rgb(255 255 255 / 16%); background: rgb(10 31 49 / 58%); backdrop-filter: blur(18px); }
+.formHeading { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: 2.5rem; }
+.formHeading span { font-size: clamp(1.6rem, 3vw, 2.7rem); font-weight: 900; text-transform: uppercase; }
+.formHeading b { max-width: 13rem; color: rgb(255 255 255 / 48%); font-size: .7rem; font-weight: 600; line-height: 1.5; text-align: right; }
+.twoColumns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.control { position: relative; margin: 1.4rem 0 2rem; }
+.control input, .control textarea { display: block; width: 100%; padding: 1rem 0 .8rem; border: 0; border-bottom: 2px solid rgb(255 255 255 / 55%); outline: 0; resize: vertical; background: transparent; color: #fff; font: inherit; font-size: 1.05rem; transition: border-color 300ms ease; }
+.control textarea { min-height: 7rem; }
+.control label { position: absolute; top: 1rem; left: 0; pointer-events: none; }
+.control label span { display: inline-block; min-width: .28rem; color: rgb(255 255 255 / 72%); font-size: 1rem; transition: color 300ms ease, transform 360ms cubic-bezier(.68,-.55,.265,1.55); }
+.control input:focus, .control input:not(:placeholder-shown), .control textarea:focus, .control textarea:not(:placeholder-shown) { border-bottom-color: #43baff; }
+.control input:focus + label span, .control input:not(:placeholder-shown) + label span, .control textarea:focus + label span, .control textarea:not(:placeholder-shown) + label span { color: #43baff; transform: translateY(-1.8rem); }
+.submitRow { display: flex; align-items: center; gap: 1.5rem; margin-top: .5rem; }
+.submitRow button { display: inline-flex; min-width: 12.5rem; min-height: 3.7rem; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 0 1.4rem; border: 0; border-radius: 999px; background: #20a957; color: #fff; font: inherit; font-weight: 900; letter-spacing: .025em; text-transform: uppercase; cursor: pointer; transition: background 250ms ease, transform 250ms ease; }
+.submitRow button:hover, .submitRow button:focus-visible { background: #178c48; transform: translateY(-2px); }
+.submitRow button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.rollText { position: relative; display: flex; height: 1.2em; overflow: hidden; line-height: 1.2; }
+.rollOutgoing, .rollIncoming { display: flex; }
+.rollIncoming { position: absolute; inset: 0; }
+.rollOutgoing > span, .rollIncoming > span { display: block; transition: transform 480ms cubic-bezier(.22,1,.36,1); }
+.rollIncoming > span { transform: translateY(125%); }
+.submitRow button:hover .rollOutgoing > span, .submitRow button:focus-visible .rollOutgoing > span { transform: translateY(-125%); }
+.submitRow button:hover .rollIncoming > span, .submitRow button:focus-visible .rollIncoming > span { transform: translateY(0); }
+.submitRow button i { width: 0; overflow: hidden; opacity: 0; font-size: 1.4rem; font-style: normal; transform: translateX(-.6rem); transition: width 380ms cubic-bezier(.22,1,.36,1), opacity 220ms ease, transform 380ms cubic-bezier(.22,1,.36,1); }
+.submitRow button:hover i, .submitRow button:focus-visible i { width: 1.4rem; opacity: 1; transform: translateX(.3rem); }
+.submitRow p { margin: 0; color: #66db97; font-size: .78rem; line-height: 1.4; opacity: 0; transform: translateY(.5rem); transition: opacity 350ms ease, transform 350ms ease; }
+.submitRow p.successVisible { opacity: 1; transform: translateY(0); }
+@media (max-width: 850px) { .section { grid-template-columns: 1fr; padding-top: 7rem; } .info h1 { font-size: clamp(3rem, 16vw, 6rem); } }
+@media (max-width: 540px) { .twoColumns { grid-template-columns: 1fr; gap: 0; } .formHeading, .submitRow { align-items: flex-start; flex-direction: column; } .formHeading b { text-align: left; } }
+@media (prefers-reduced-motion: reduce) { .control label span, .submitRow button, .submitRow button i, .submitRow p, .rollOutgoing > span, .rollIncoming > span { transition-duration: .01ms; } }

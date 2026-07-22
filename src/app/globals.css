@@ -32,3 +32,9 @@ body {
 
 html { scroll-behavior: smooth; }
 ::selection { background: #42b9ff; color: #071a2f; }
+a,
+button,
+label,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}

@@ -1,0 +1,110 @@
+.wrapper {
+  --btn-color: #f5101b;
+  --text-color: #fff;
+  --land-color: #ffdd9f;
+  --veg-color: #36ad5aa9;
+  --water-color: #b3e3ff;
+  --transition-dur: 0.3s;
+  position: relative;
+  display: flex;
+  align-self: flex-start;
+  margin-top: 1.6rem;
+  overflow: hidden;
+  border-radius: 50ch;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  user-select: none;
+  box-shadow: 0 -1px 2px rgb(3 7 18 / 0.5%), 0 -5px 6px rgb(3 7 18 / 0.9%), 0 -12px 12px rgb(3 7 18 / 1.5%), 0 -20px 22px rgb(3 7 18 / 2%), 0 -32px 32px rgb(3 7 18 / 6%);
+  transition: transform var(--transition-dur) ease;
+}
+
+.filterSvg { position: absolute; width: 0; height: 0; }
+
+.button {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  padding: 1em 1.5em 1em 3.5em;
+  border-radius: 50ch;
+  background-color: var(--btn-color);
+  color: var(--text-color);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition-dur) ease-in-out, background-color var(--transition-dur) ease-in-out;
+}
+
+
+.button span {
+  position: relative;
+  z-index: 5;
+}
+.pinpoint {
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  top: 20%;
+  left: 0.75em;
+  height: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  filter: blur(0.25px);
+  mask-image: radial-gradient(circle at center, transparent 0%, transparent 32%, #fff 36%);
+  transform: rotateZ(45deg);
+  transition: background-color var(--transition-dur) ease-in-out, transform var(--transition-dur) ease-in-out, border-radius calc(var(--transition-dur) + 0.1s) ease;
+}
+
+.mapContainer {
+  pointer-events: none;
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  display: flex;
+  opacity: 0;
+  perspective: 180px;
+  transform: perspective(180px) rotateX(18deg) scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--transition-dur) ease-in-out, opacity var(--transition-dur) ease-in-out;
+}
+
+.map {
+  position: relative;
+  width: 25%;
+  height: 100%;
+  flex: 0 0 25%;
+  overflow: hidden;
+  background-color: var(--water-color);
+  background-image:
+    linear-gradient(34deg, transparent 44%, rgb(255 255 255 / 90%) 45%, rgb(255 255 255 / 90%) 48%, transparent 49%),
+    linear-gradient(145deg, transparent 40%, rgb(255 255 255 / 70%) 41%, rgb(255 255 255 / 70%) 44%, transparent 45%);
+  mask-image: linear-gradient(to top, #fff, 97%, transparent);
+  transform-origin: center;
+}
+
+.map::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0.2rem;
+  background-color: var(--land-color);
+  filter: url(#map-button-land);
+  box-shadow: inset 0 0 1rem 0.35rem var(--veg-color);
+}
+
+.map::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  box-shadow: inset 0 10px 16px 3px #0004;
+}
+
+.fold1 { transform: rotateY(10deg) translateZ(5px); }
+.fold2 { transform: rotateY(-10deg) translateZ(9px); }
+.fold3 { transform: rotateY(10deg) translateZ(9px); }
+.fold4 { transform: rotateY(-10deg) translateZ(5px); }
+
+.wrapper:has(.button:hover),
+.wrapper:has(.button:focus-visible) { transform: scale(1.1); }
+.button:hover, .button:focus-visible { background-color: transparent; color: #fff; }

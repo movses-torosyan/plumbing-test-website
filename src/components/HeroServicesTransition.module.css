@@ -2,8 +2,17 @@
   --services-reveal: 100%;
   --hero-scroll: 0vh;
   --services-lift: 12vh;
+  --services-scroll: 0vh;
+  --why-reveal: 100%;
+  --why-lift: 12vh;
+  --why-scroll: 0vh;
+  --locations-reveal: 100%;
+  --locations-lift: 12vh;
+  --locations-scroll: 0vh;
+  --reviews-reveal: 100%;
+  --reviews-lift: 12vh;
   position: relative;
-  height: 200svh;
+  height: 500svh;
   background: #071a2f;
 }
 
@@ -16,7 +25,10 @@
 }
 
 .heroLayer,
-.servicesLayer {
+.servicesLayer,
+.whyLayer,
+.locationsLayer,
+.reviewsLayer {
   position: absolute;
   inset: 0;
 }
@@ -28,9 +40,7 @@
   transform: translate3d(0, var(--hero-scroll), 0);
 }
 
-.heroLayer > section {
-  height: 124svh;
-}
+.heroLayer > section { height: 124svh; }
 
 .servicesLayer {
   z-index: 2;
@@ -40,22 +50,133 @@
 }
 
 .servicesMotion {
-  height: 100%;
+  height: 118svh;
   will-change: transform;
-  transform: translate3d(0, var(--services-lift), 0);
+  transform: translate3d(0, calc(var(--services-lift) + var(--services-scroll)), 0);
 }
 
+.whyLayer {
+  z-index: 3;
+  overflow: hidden;
+  clip-path: inset(var(--why-reveal) 0 0 0);
+  will-change: clip-path;
+}
+
+.whyMotion {
+  height: 118svh;
+  will-change: transform;
+  transform: translate3d(0, calc(var(--why-lift) + var(--why-scroll)), 0);
+}
+
+.whyMotion > section {
+  height: 100svh;
+  min-height: 600px;
+}
+
+.locationsLayer {
+  z-index: 4;
+  overflow: hidden;
+  clip-path: inset(var(--locations-reveal) 0 0 0);
+  will-change: clip-path;
+}
+
+.locationsMotion {
+  height: 118svh;
+  will-change: transform;
+  transform: translate3d(0, calc(var(--locations-lift) + var(--locations-scroll)), 0);
+}
+.reviewsLayer {
+  z-index: 5;
+  overflow: hidden;
+  clip-path: inset(var(--reviews-reveal) 0 0 0);
+  will-change: clip-path;
+}
+
+.reviewsMotion {
+  height: 100%;
+  will-change: transform;
+  transform: translate3d(0, var(--reviews-lift), 0);
+}
+.servicesMotion > section > *,
+.whyMotion h2,
+.whyMotion p,
+.whyMotion article,
+.locationsMotion h2,
+.locationsMotion p,
+.locationsMotion [aria-label="Service areas"],
+.locationsMotion button,
+.reviewsMotion header,
+.reviewsMotion article {
+  opacity: 0;
+  transform: translate3d(0, 64px, 0);
+  transition: opacity 700ms ease, transform 950ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.servicesMotion[data-visible="true"] > section > *,
+.whyMotion[data-visible="true"] h2,
+.whyMotion[data-visible="true"] p,
+.whyMotion[data-visible="true"] article,
+.locationsMotion[data-visible="true"] h2,
+.locationsMotion[data-visible="true"] p,
+.locationsMotion[data-visible="true"] [aria-label="Service areas"],
+.locationsMotion[data-visible="true"] button,
+.reviewsMotion[data-visible="true"] header,
+.reviewsMotion[data-visible="true"] article {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.whyMotion article:nth-of-type(2),
+.locationsMotion [data-visible="true"]:nth-child(2),
+.reviewsMotion article:nth-of-type(2) {
+  transition-delay: 90ms;
+}
+
+.whyMotion article:nth-of-type(3),
+.reviewsMotion article:nth-of-type(3) {
+  transition-delay: 180ms;
+}
+@media (max-width: 850px) {
+  .frame { height: 100dvh; }
+  .heroLayer > section { height: 124dvh; }
+  .servicesMotion,
+  .whyMotion,
+  .locationsMotion { height: 118dvh; }
+  .whyMotion > section { height: 100dvh; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .stage {
     --hero-scroll: 0vh;
     --services-lift: 0vh;
+    --services-scroll: 0vh;
+    --why-lift: 0vh;
+    --why-scroll: 0vh;
+    --locations-lift: 0vh;
+    --locations-scroll: 0vh;
+    --reviews-lift: 0vh;
     height: auto;
   }
+
+  .servicesMotion > section > *,
+  .whyMotion h2,
+  .whyMotion p,
+  .whyMotion article,
+  .locationsMotion h2,
+  .locationsMotion p,
+  .locationsMotion [aria-label="Service areas"],
+  .locationsMotion button,
+  .reviewsMotion header,
+  .reviewsMotion article {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .frame { position: relative; height: auto; overflow: visible; }
-  .heroLayer, .servicesLayer { position: relative; }
+  .heroLayer, .servicesLayer, .whyLayer, .locationsLayer, .reviewsLayer { position: relative; }
   .heroLayer { bottom: auto; transform: none; }
   .heroLayer > section { height: 100svh; }
-  .servicesLayer { clip-path: none; }
-  .servicesMotion { transform: none; }
+  .servicesLayer, .whyLayer, .locationsLayer, .reviewsLayer { clip-path: none; }
+  .servicesMotion, .whyMotion, .locationsMotion, .reviewsMotion { height: auto; transform: none; }
+  .whyMotion > section { height: auto; }
 }

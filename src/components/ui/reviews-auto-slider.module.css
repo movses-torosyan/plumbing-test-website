@@ -1,0 +1,43 @@
+.viewport {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  gap: 1.25rem;
+  padding: 1rem 0 1.5rem;
+  animation: reviews-flow 32s linear infinite;
+}
+
+.viewport:hover .track { animation-play-state: paused; }
+
+.card {
+  width: clamp(18rem, 27vw, 24rem);
+  min-height: 13.5rem;
+  flex: 0 0 auto;
+  padding: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 16%);
+  background: rgb(255 255 255 / 7%);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 20%);
+  backdrop-filter: blur(14px);
+  transition: transform 300ms ease, background-color 300ms ease, border-color 300ms ease;
+}
+
+.card:hover { border-color: rgb(72 191 255 / 58%); background: rgb(255 255 255 / 11%); transform: translateY(-0.45rem); }
+.stars { color: #48bfff; font-size: 0.8rem; letter-spacing: 0.2em; }
+.card blockquote { margin: 1.2rem 0 1.5rem; color: #fff; font-size: clamp(1rem, 1.25vw, 1.12rem); font-weight: 650; line-height: 1.55; }
+.card footer { display: flex; align-items: center; gap: 0.8rem; }
+.avatar { display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border-radius: 50%; background: #48bfff; color: #071a2f; font-weight: 900; }
+.card footer > span:last-child { display: flex; flex-direction: column; }
+.card strong { font-size: 0.85rem; text-transform: uppercase; }
+.card small { margin-top: 0.15rem; color: rgb(255 255 255 / 55%); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+@keyframes reviews-flow { to { transform: translateX(calc(-50% - 0.625rem)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+  .viewport { overflow-x: auto; mask-image: none; }
+}

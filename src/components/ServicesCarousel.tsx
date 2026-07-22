@@ -1,22 +1,24 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { TextReveal } from "@/components/ui/cascade-text";
 import styles from "./ServicesSection.module.css";
 
 const services = [
-  { name: "Plumbing Services", image: "/images/Plumbing service.png" },
-  { name: "Leak Detection", image: "/images/Leak Detection.png" },
-  { name: "Water Heater Services", image: "/images/Water Heater Services.png" },
-  { name: "Pipe Services", image: "/images/Pipe Services.png" },
-  { name: "Drain Services", image: "/images/Drain Services.png" },
+  { name: "Emergency Services", description: "Rapid 24/7 help for burst pipes, major leaks, flooding, and urgent plumbing failures.", image: "/images/Emergency Services.png" },
+  { name: "Plumbing Services", description: "Reliable repairs, installations, and maintenance for every part of your plumbing system.", image: "/images/Plumbing Services.png" },
+  { name: "Leak Detection", description: "Precise diagnostics that locate hidden leaks quickly and help prevent costly water damage.", image: "/images/Leak Detection.png" },
+  { name: "Water Heater Services", description: "Professional water-heater repair, replacement, and maintenance for dependable hot water.", image: "/images/Water Heater Services.png" },
+  { name: "Pipe Services", description: "Durable pipe repair and replacement solutions designed for lasting performance.", image: "/images/Pipe Services.png" },
+  { name: "Drain Services", description: "Fast, thorough drain cleaning that restores flow and helps stop recurring blockages.", image: "/images/Drain Services.png" },
 ];
 
 export function ServicesCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
-  const [isPaused, setIsPaused] = useState(false);
+  const [isServicesHovered, setIsServicesHovered] = useState(false);
 
   const changeSlide = useCallback((step: -1 | 1) => {
     setDirection(step === -1 ? "right" : "left");
@@ -24,20 +26,15 @@ export function ServicesCarousel() {
   }, []);
 
   useEffect(() => {
-    if (isPaused) return;
-    const timer = window.setInterval(() => changeSlide(-1), 5000);
+    const timer = window.setInterval(() => changeSlide(-1), 7000);
     return () => window.clearInterval(timer);
-  }, [changeSlide, isPaused]);
+  }, [changeSlide]);
 
   const service = services[activeIndex];
 
   return (
     <div
       className={styles.carousel}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocusCapture={() => setIsPaused(true)}
-      onBlurCapture={() => setIsPaused(false)}
     >
       <div key={`${activeIndex}-${direction}`} className={`${styles.imageLayer} ${direction === "right" ? styles.enterRight : styles.enterLeft}`}>
         <div className={styles.parallaxLayer}>
@@ -46,20 +43,45 @@ export function ServicesCarousel() {
       </div>
       <div className={styles.imageOverlay} />
 
+      <aside className={styles.serviceInfo} aria-live="polite">
+        <p className={styles.serviceInfoLabel}>Featured service</p>
+        <h3 className={styles.serviceInfoTitle}>{service.name}</h3>
+        <p className={styles.serviceInfoDescription}>{service.description}</p>
+      </aside>
+
       <button className={`${styles.arrow} ${styles.arrowLeft}`} type="button" onClick={() => changeSlide(-1)} aria-label="Previous service">←</button>
       <button className={`${styles.arrow} ${styles.arrowRight}`} type="button" onClick={() => changeSlide(1)} aria-label="Next service">→</button>
 
-      <TextReveal
-        as="button"
-        text="[SERVICES]"
-        staticCharacters="[]"
-        fontSize="1rem"
-        staggerDelay={32}
-        duration={340}
-        color="#ffffff"
-        hoverColor="#48bfff"
+      <Link
+        href="/services"
+        onClick={(event) => {
+          if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          window.dispatchEvent(new CustomEvent("site-preloader:navigate", { detail: "/services" }));
+        }}
         className={styles.servicesButton}
-      />
+        aria-label="View services"
+        onMouseEnter={() => setIsServicesHovered(true)}
+        onMouseLeave={() => setIsServicesHovered(false)}
+        onFocus={() => setIsServicesHovered(true)}
+        onBlur={() => setIsServicesHovered(false)}
+      >
+        <span className={styles.bracket} aria-hidden="true">[</span>
+        <TextReveal
+          as="span"
+          text="Services"
+          fontSize="inherit"
+          staggerDelay={32}
+          duration={340}
+          color="#ffffff"
+          hoverColor="#ffffff"
+          active={isServicesHovered}
+          className={styles.servicesText}
+          style={{ padding: 0 }}
+        />
+        <span className={styles.buttonArrow} aria-hidden="true">→</span>
+        <span className={styles.bracket} aria-hidden="true">]</span>
+      </Link>
 
       <div className={styles.copy}>
         <h2 className={styles.title}>Our Services</h2>

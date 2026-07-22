@@ -1,0 +1,46 @@
+.footer { --footer-shift: 10px; position: relative; z-index: 6; padding: clamp(1.5rem, 2.8vw, 2.5rem) clamp(1.25rem, 5vw, 4.5rem) 1rem; overflow: hidden; background: #030d18; color: #fff; }
+.parallaxContent { transform: translate3d(0, var(--footer-shift), 0); will-change: transform; }
+.top, .middle, .bottom { width: min(100%, 84rem); margin-inline: auto; }
+.top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2rem; padding-bottom: 1.1rem; border-bottom: 1px solid rgb(255 255 255 / 16%); }
+.callAction { justify-self: start; }
+.locationAction { display: flex; align-items: flex-start; flex-direction: column; justify-self: end; gap: 0.15rem; }
+.locationAction > span { color: #48bfff; font-size: 0.72rem; font-weight: 850; letter-spacing: 0.18em; text-transform: uppercase; }
+.locationAction > div :global(.map-btn-wrapper) { margin-top: 0.35rem; }
+.contactButton { justify-self: center; border: 0; border-radius: 0; background: none !important; box-shadow: none; font-weight: 900; }
+.contactButton:hover { background: none !important; }
+.middle { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 1rem; }
+.brand { display: flex; align-items: center; gap: 0.8rem; font-size: 1.15rem; font-weight: 800; }
+.brand img { border-radius: 0.65rem; background: #fff; object-fit: contain; }
+.brand b { color: #48bfff; }
+.socials { display: flex; gap: 0.7rem; }
+.social { display: grid; width: 3.25rem; height: 3.25rem; place-items: center; overflow: hidden; background: #1d2935; transition: background-color 300ms ease, transform 300ms ease; }
+.social svg { width: 1.05rem; max-height: 1.1rem; fill: #fff; }
+.social:hover svg, .social:focus-visible svg { animation: social-rise-reversed 300ms both; }
+.social:active { transform: scale(0.9); }
+.instagram:hover, .instagram:focus-visible { background: #d62976; }
+.twitter:hover, .twitter:focus-visible { background: #00acee; }
+.linkedin:hover, .linkedin:focus-visible { background: #0072b1; }
+.whatsapp:hover, .whatsapp:focus-visible { background: #128c7e; }
+.social:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.bottom { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-top: 1rem; border-top: 1px solid rgb(255 255 255 / 16%); color: rgb(255 255 255 / 52%); font-size: 0.72rem; text-transform: uppercase; }
+.bottom p { margin: 0; }
+.credit { display: flex; align-items: center; gap: 0.7rem; }
+.credit a { display: inline-flex; border-radius: .35rem; transition: opacity 220ms ease, transform 220ms ease; }
+.credit a:hover { opacity: .82; transform: translateY(-2px); }
+.credit a:focus-visible { outline: 2px solid #48bfff; outline-offset: 4px; }
+.credit img { width: auto; height: 1.8rem; object-fit: contain; }
+
+@keyframes social-rise-reversed { from { opacity: 0; transform: translateY(3.25rem); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 760px) {
+  .top { display: flex; align-items: flex-start; flex-direction: column; gap: 1rem; }
+  .contactButton { align-self: flex-start; }
+  .locationAction { align-self: flex-start; }
+  .middle { align-items: flex-start; flex-direction: column; }
+  .bottom { align-items: flex-start; flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallaxContent { transform: none; }
+  .social:hover svg, .social:focus-visible svg { animation: none; }
+}

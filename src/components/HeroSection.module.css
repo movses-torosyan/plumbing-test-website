@@ -22,7 +22,7 @@
 
 .backgroundImage {
   object-fit: fill;
-  filter: blur(10px);
+  filter: blur(5px) saturate(0.92);
 }
 
 .horizontalOverlay,
@@ -47,51 +47,30 @@
 
 .pipe {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
-.whitePipe {
-  top: 0;
-  left: -25%;
-  width: 70vw;
-  transform: rotate(-24deg);
-}
-
-.copperPipe {
-  top: 23%;
-  right: 10%;
-  width: clamp(220px, 28vw, 430px);
-  transform: rotate(-30deg);
-}
-.adjustableWrench,
-.pipeWrench {
-  z-index: 11;
-}
-
 .adjustableWrench {
-  top: 11%;
-  right: 19%;
-  width: clamp(210px, 12vw, 390px);
-  transform: rotate(10deg);
+  top: 17%;
+  right: clamp(2rem, 10vw, 12rem);
+  width: clamp(195px, 14vw, 300px);
+  transform: rotate(12deg);
 }
 
 .pipeWrench {
-  left: 7%;
-  width: clamp(230px, 27vw, 420px);
-  transform: rotate(20deg) scaleX(-1);
+  top: 15%;
+  left: clamp(2rem, 10vw, 12rem);
+  width: 300px;
+  transform: rotate(16deg) scaleX(-1);
 }
 
-.pipeImage {
-  width: 100%;
-  height: auto;
-  opacity: 1;
-  filter: blur(5px);
-}
 .toolImage {
   width: 100%;
   height: auto;
-  opacity: 1;
+  opacity: 0.9;
+  filter: drop-shadow(0 20px 26px rgb(0 0 0 / 38%))
+    drop-shadow(0 0 14px rgb(72 191 255 / 18%));
 }
 
 .floatPipe,
@@ -112,13 +91,49 @@
   max-width: 80rem;
   margin-inline: auto;
   padding: 6rem 1.25rem;
-  transform: translateY(-2rem);
+  transform: translateY(1rem);
 }
 
 .contentInner {
-  max-width: 48rem;
+  max-width: 52rem;
   margin-inline: auto;
   text-align: center;
+}
+.trustLabel,
+.title,
+.description,
+.actions {
+  opacity: 0;
+  transform: translate3d(0, 64px, 0);
+  animation: hero-copy-rise 900ms cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+.trustLabel { animation-delay: 2.55s; }
+.title { animation-delay: 2.68s; }
+.description { animation-delay: 2.82s; }
+.actions { animation-delay: 2.96s; }
+
+.trustLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.15rem;
+  color: #8ed8ff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.trustLabel span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #33c677;
+  box-shadow:
+    0 0 0 5px rgb(51 198 119 / 12%),
+    0 0 18px rgb(51 198 119 / 55%);
+  animation: availability-pulse 1.8s ease-in-out infinite;
 }
 
 .title {
@@ -136,7 +151,7 @@
 }
 
 .description {
-  max-width: 36rem;
+  max-width: 34rem;
   margin: 1.5rem auto 0;
   color: #e2e8f0;
   font-size: 1.125rem;
@@ -152,18 +167,43 @@
   margin-top: 2.25rem;
 }
 
+@keyframes hero-copy-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 64px, 0);
+  }
 
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 @keyframes float-pipe {
   0%,
   100% {
     transform: translate3d(0, -10px, 0);
   }
-
   50% {
     transform: translate3d(0, 18px, 0);
   }
 }
 
+@keyframes availability-pulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    box-shadow:
+      0 0 0 3px rgb(51 198 119 / 10%),
+      0 0 8px rgb(51 198 119 / 35%);
+  }
+
+  50% {
+    transform: scale(1.12);
+    box-shadow:
+      0 0 0 8px rgb(51 198 119 / 14%),
+      0 0 24px rgb(51 198 119 / 80%);
+  }
+}
 @media (min-width: 640px) {
   .content {
     padding-top: 7rem;
@@ -173,11 +213,9 @@
   .title {
     font-size: 3.75rem;
   }
-
   .description {
     font-size: 1.25rem;
   }
-
   .actions {
     flex-direction: row;
   }
@@ -194,15 +232,70 @@
   }
 }
 
+@media (max-width: 1357px) {
+  .pipeWrench {
+    left: clamp(1rem, 8vw, 7rem);
+  }
+}
+
+@media (max-width: 1226px) {
+  .pipeWrench {
+    left: clamp(0.5rem, 5vw, 4rem);
+  }
+}
+
+@media (max-width: 1190px) {
+  .pipeWrench {
+    left: clamp(0rem, 2vw, 1.5rem);
+  }
+}
+
+@media (max-width: 1128px) {
+  .pipeWrench {
+    left: -1.5rem;
+  }
+
+  .adjustableWrench {
+    right: -1.5rem;
+  }
+}
+@media (max-width: 918px) {
+  .pipeWrench {
+    left: -4rem;
+  }
+}
+@media (max-width: 760px) {
+  .adjustableWrench {
+    right: -4rem;
+    width: 145px;
+    opacity: 0.65;
+  }
+
+  .pipeWrench {
+    left: -3.5rem;
+    width: 155px;
+    opacity: 0.65;
+  }
+}
+@media (max-width: 760px) {
+  .hero { height: 100dvh; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero {
     --background-parallax: 0px;
   }
-
-
-
+  .trustLabel,
+  .title,
+  .description,
+  .actions {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
   .floatPipe,
-  .floatPipeReverse {
+  .floatPipeReverse,
+  .trustLabel span {
     animation: none;
   }
 }

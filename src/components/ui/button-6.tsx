@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import styles from "./button-6.module.css";
 
 function MenuIcon({ open }: { open: boolean }) {
@@ -12,16 +11,14 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
-export const Component = () => {
-  const [open, setOpen] = useState(false);
-
+export const Component = ({ open, onToggle }: { open: boolean; onToggle: () => void }) => {
   return (
     <button
       type="button"
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
-      onClick={() => setOpen((value) => !value)}
-      className="group relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-[10px] border-2 border-white/35 font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+      onClick={onToggle}
+      className="group relative inline-flex h-12 w-12 cursor-pointer items-center justify-center overflow-hidden rounded-[10px] border-2 border-white/35 font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
     >
       <span className="inline-flex h-12 w-12 translate-y-0 items-center justify-center bg-white/5 transition duration-500 group-hover:-translate-y-[150%] group-focus-visible:-translate-y-[150%]">
         <MenuIcon open={open} />
