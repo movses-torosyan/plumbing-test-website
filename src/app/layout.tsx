@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Logo Plumbing | Fast, Reliable Local Plumbers",
+  title: "Your Plumbing Website",
   description: "Licensed local plumbing service for repairs, installations, and 24/7 emergencies.",
 };
 

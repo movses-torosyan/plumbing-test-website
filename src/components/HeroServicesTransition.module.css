@@ -97,6 +97,38 @@
   will-change: transform;
   transform: translate3d(0, var(--reviews-lift), 0);
 }
+.whyMotion h2,
+.whyMotion p,
+.whyMotion article,
+.locationsMotion h2,
+.locationsMotion p,
+.locationsMotion [aria-label="Service areas"],
+.locationsMotion button,
+.reviewsMotion header,
+.reviewsMotion article {
+  opacity: 0;
+  transform: translate3d(0, 64px, 0);
+  transition: opacity 700ms ease, transform 950ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.whyMotion[data-visible="true"] h2,
+.whyMotion[data-visible="true"] p,
+.whyMotion[data-visible="true"] article,
+.locationsMotion[data-visible="true"] h2,
+.locationsMotion[data-visible="true"] p,
+.locationsMotion[data-visible="true"] [aria-label="Service areas"],
+.locationsMotion[data-visible="true"] button,
+.reviewsMotion[data-visible="true"] header,
+.reviewsMotion[data-visible="true"] article {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.whyMotion article:nth-of-type(2),
+.reviewsMotion article:nth-of-type(2) { transition-delay: 90ms; }
+
+.whyMotion article:nth-of-type(3),
+.reviewsMotion article:nth-of-type(3) { transition-delay: 180ms; }
 @media (max-width: 850px) {
   .frame { height: 100dvh; }
   .heroLayer > section { height: 124dvh; }
@@ -117,6 +149,19 @@
     --locations-scroll: 0vh;
     --reviews-lift: 0vh;
     height: auto;
+  }
+  .whyMotion h2,
+  .whyMotion p,
+  .whyMotion article,
+  .locationsMotion h2,
+  .locationsMotion p,
+  .locationsMotion [aria-label="Service areas"],
+  .locationsMotion button,
+  .reviewsMotion header,
+  .reviewsMotion article {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
   .frame { position: relative; height: auto; overflow: visible; }
   .heroLayer, .servicesLayer, .whyLayer, .locationsLayer, .reviewsLayer { position: relative; }
