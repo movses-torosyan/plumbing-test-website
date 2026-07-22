@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ReactLenis from "lenis/react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import styles from "./AboutJourney.module.css";
 
 const cards = [
@@ -72,5 +72,9 @@ function StickyAboutCards() {
 }
 
 export function AboutJourney() {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return <ReactLenis root><section id="about" className={styles.about}><StickyAboutCards /></section></ReactLenis>;
 }
