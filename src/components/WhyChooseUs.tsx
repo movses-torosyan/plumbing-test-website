@@ -11,7 +11,7 @@ export function WhyChooseUs() {
   return (
     <section id="about" className={styles.section} aria-labelledby="why-choose-title">
       <Image
-        src="/images/why-choose-plumbing-team.png"
+        src="/images/why-choose-plumbing-team.webp"
         alt="Professional plumbing team servicing a modern home system"
         fill
         sizes="100vw"

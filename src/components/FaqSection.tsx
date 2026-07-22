@@ -20,7 +20,7 @@ export function FaqSection() {
   return (
     <section id="faq" className={styles.section}>
       <div className={styles.visual}>
-        <Image src="/images/menu-faq.png" alt="A plumber explaining a repair to a homeowner" fill priority sizes="(max-width: 850px) 100vw, 42vw" />
+        <Image src="/images/menu-faq.webp" alt="A plumber explaining a repair to a homeowner" fill priority sizes="(max-width: 850px) 100vw, 42vw" />
         <div className={styles.visualShade} />
         <div className={styles.visualCopy}><span>Answers from professionals</span><p>Clear guidance before, during, and after every service call.</p></div>
       </div>

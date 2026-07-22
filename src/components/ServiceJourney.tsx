@@ -7,12 +7,12 @@ import { TextReveal } from "./ui/cascade-text";
 import styles from "./ServiceJourney.module.css";
 
 const services = [
-  { title: "Emergency Services", image: "/images/Emergency Services.png", eyebrow: "Available day and night", items: ["24/7 Emergency Plumbing", "Emergency Leak Repair", "Burst Pipe Repair", "Flood Response"] },
-  { title: "Plumbing Services", image: "/images/Plumbing Services.png", eyebrow: "Everyday plumbing, elevated", items: ["Faucet Repair & Installation", "Toilet Repair & Installation", "Shower & Bathtub Repair", "Sink Installation", "Garbage Disposal Repair"] },
-  { title: "Drain Services", image: "/images/Drain Services.png", eyebrow: "Restore the flow", items: ["Drain Cleaning", "Clogged Drain Repair", "Hydro Jetting", "Sewer Drain Cleaning"] },
-  { title: "Water Heater Services", image: "/images/Water Heater Services.png", eyebrow: "Reliable hot water", items: ["Water Heater Installation", "Water Heater Repair", "Tankless Water Heater Installation", "Water Heater Maintenance"] },
-  { title: "Leak Detection", image: "/images/Leak Detection.png", eyebrow: "Find it before it spreads", items: ["Water Leak Detection", "Slab Leak Detection", "Gas Leak Detection"] },
-  { title: "Pipe Services", image: "/images/Pipe Services.png", eyebrow: "Built for lasting performance", items: ["Pipe Repair", "Pipe Replacement", "Repiping", "Frozen Pipe Repair", "Burst Pipe Repair"] },
+  { title: "Emergency Services", image: "/images/Emergency Services.webp", eyebrow: "Available day and night", items: ["24/7 Emergency Plumbing", "Emergency Leak Repair", "Burst Pipe Repair", "Flood Response"] },
+  { title: "Plumbing Services", image: "/images/Plumbing Services.webp", eyebrow: "Everyday plumbing, elevated", items: ["Faucet Repair & Installation", "Toilet Repair & Installation", "Shower & Bathtub Repair", "Sink Installation", "Garbage Disposal Repair"] },
+  { title: "Drain Services", image: "/images/Drain Services.webp", eyebrow: "Restore the flow", items: ["Drain Cleaning", "Clogged Drain Repair", "Hydro Jetting", "Sewer Drain Cleaning"] },
+  { title: "Water Heater Services", image: "/images/Water Heater Services.webp", eyebrow: "Reliable hot water", items: ["Water Heater Installation", "Water Heater Repair", "Tankless Water Heater Installation", "Water Heater Maintenance"] },
+  { title: "Leak Detection", image: "/images/Leak Detection.webp", eyebrow: "Find it before it spreads", items: ["Water Leak Detection", "Slab Leak Detection", "Gas Leak Detection"] },
+  { title: "Pipe Services", image: "/images/Pipe Services.webp", eyebrow: "Built for lasting performance", items: ["Pipe Repair", "Pipe Replacement", "Repiping", "Frozen Pipe Repair", "Burst Pipe Repair"] },
 ];
 
 function ServicePanel({ service, index }: { service: (typeof services)[number]; index: number }) {
@@ -56,11 +56,12 @@ export function ServiceJourney() {
       const rect = stage.getBoundingClientRect();
       const distance = Math.max(stage.offsetHeight - (window.visualViewport?.height ?? window.innerHeight), 1);
       const progress = Math.min(Math.max(-rect.top / distance, 0), 1);
+      const mobile = window.matchMedia("(max-width: 850px)").matches;
       for (let index = 1; index < services.length; index += 1) {
         const local = Math.min(Math.max((progress - (index - 1) / (services.length - 1)) * (services.length - 1), 0), 1);
         stage.style.setProperty(`--reveal-${index}`, `${(1 - local) * 100}%`);
-        stage.style.setProperty(`--lift-${index}`, `${(1 - local) * 12}vh`);
-        stage.style.setProperty(`--scroll-${index - 1}`, `${local * -8}vh`);
+        stage.style.setProperty(`--lift-${index}`, `${(1 - local) * (mobile ? 8 : 12)}vh`);
+        stage.style.setProperty(`--scroll-${index - 1}`, `${local * (mobile ? -5 : -8)}vh`);
       }
     };
 

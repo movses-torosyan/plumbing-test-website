@@ -44,7 +44,7 @@ export function HeroSection() {
       <div className={styles.verticalOverlay} />
       <div className={`${styles.pipe} ${styles.adjustableWrench}`} aria-hidden="true">
         <Image
-          src="/images/adjustable-wrench.png"
+          src="/images/adjustable-wrench.webp"
           alt=""
           width={1254}
           height={1254}
@@ -53,7 +53,7 @@ export function HeroSection() {
       </div>
       <div className={`${styles.pipe} ${styles.pipeWrench}`} aria-hidden="true">
         <Image
-          src="/images/pipe-wrench.png"
+          src="/images/pipe-wrench.webp"
           alt=""
           width={1254}
           height={1254}

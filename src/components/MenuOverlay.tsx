@@ -5,11 +5,11 @@ import { useState } from "react";
 import styles from "./MenuOverlay.module.css";
 
 const links = [
-  { label: "Services", href: "/services", external: false, image: "/images/menu-services.png" },
-  { label: "About", href: "/about", external: false, image: "/images/menu-about.png" },
-  { label: "On Map", href: "https://www.google.com/maps/search/?api=1&query=plumber+near+me", external: true, image: "/images/menu-locations.png" },
-  { label: "FAQ", href: "/faq", external: false, image: "/images/menu-faq.png" },
-  { label: "Contact Us", href: "/contact", external: false, image: "/images/Plumbing service.png" },
+  { label: "Services", href: "/services", external: false, image: "/images/menu-services.webp" },
+  { label: "About", href: "/about", external: false, image: "/images/menu-about.webp" },
+  { label: "On Map", href: "https://www.google.com/maps/search/?api=1&query=plumber+near+me", external: true, image: "/images/menu-locations.webp" },
+  { label: "FAQ", href: "/faq", external: false, image: "/images/menu-faq.webp" },
+  { label: "Contact Us", href: "/contact", external: false, image: "/images/Plumbing service.webp" },
 ];
 
 export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {

@@ -56,7 +56,7 @@ export function Navbar() {
       <nav aria-label="Main navigation" className="flex h-20 w-full items-center justify-between pl-5 pr-2 sm:pl-8 sm:pr-3 lg:pl-10 lg:pr-4">
         <Link href="/#home" onClick={navigateHome} className="flex items-center gap-3" aria-label="Your Logo home">
           <span className="grid h-12 w-12 place-items-center rounded-xl bg-white p-1 shadow-sm shadow-black/15">
-            <Image src="/images/plumbing-logo.png" alt="" width={48} height={48} className="h-10 w-10 object-contain" priority />
+            <Image src="/images/plumbing-logo.webp" alt="" width={48} height={48} className="h-10 w-10 object-contain" priority />
           </span>
           <span className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">Your <span className="text-[#42b9ff]">Logo</span></span>
         </Link>

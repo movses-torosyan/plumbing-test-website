@@ -69,8 +69,8 @@ export function SitePreloader() {
       <div className={styles.glow} />
       <div className={styles.brand}>Your <b>Logo</b></div>
       <div className={styles.mark}>
-        <div className={`${styles.tool} ${styles.pipeWrench}`}><Image src="/images/Spanner-loader-v2.png" alt="" fill priority unoptimized sizes="220px" /></div>
-        <div className={`${styles.tool} ${styles.spanner}`}><Image src="/images/Wrench-loader-v2.png" alt="" fill priority unoptimized sizes="220px" /></div>
+        <div className={`${styles.tool} ${styles.pipeWrench}`}><Image src="/images/Spanner-loader-v2.webp" alt="" fill priority unoptimized sizes="220px" /></div>
+        <div className={`${styles.tool} ${styles.spanner}`}><Image src="/images/Wrench-loader-v2.webp" alt="" fill priority unoptimized sizes="220px" /></div>
       </div>
     </div>
   );

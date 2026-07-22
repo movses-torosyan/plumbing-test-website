@@ -7,7 +7,7 @@ const areas = ["Downtown", "Northside", "West End", "Riverside", "Surrounding ar
 export function LocationsSection() {
   return (
     <section id="locations" className={styles.section} aria-labelledby="locations-title">
-      <Image src="/images/locations-map-pin.png" alt="Location marker placed on a detailed city map" fill sizes="100vw" className={styles.image} />
+      <Image src="/images/locations-map-pin.webp" alt="Location marker placed on a detailed city map" fill sizes="100vw" className={styles.image} />
       <div className={styles.overlay} />
       <div className={styles.content}>
         <p className={styles.eyebrow}>Locations</p>

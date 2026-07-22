@@ -16,7 +16,7 @@
 .list li:first-child { border-top: 0; }
 .list b { color: #43baff; font-size: .65rem; }
 .counter { position: absolute; z-index: 2; right: 2rem; bottom: 1.5rem; font-size: .7rem; font-weight: 850; letter-spacing: .18em; }
-@media (max-width: 760px) { .background { object-position: 72% center; } .content { grid-template-columns: 1fr; align-content: end; padding-top: 6rem; gap: 1.5rem; } .intro h1 { font-size: clamp(2.8rem, 14vw, 5rem); } .list { padding-block: .6rem; } .list li { padding: .48rem 0; } .counter { display: none; } }
+@media (max-width: 760px) { .list { backdrop-filter: none; } .background { object-position: 72% center; } .content { grid-template-columns: 1fr; align-content: end; padding-top: 6rem; gap: 1.5rem; } .intro h1 { font-size: clamp(2.8rem, 14vw, 5rem); } .list { padding-block: .6rem; } .list li { padding: .48rem 0; } .counter { display: none; } }
 @media (max-width: 760px) {
   .frame { height: var(--app-viewport-height, 100dvh); }
   .motion { height: calc(var(--app-viewport-height, 100dvh) + 12dvh); }

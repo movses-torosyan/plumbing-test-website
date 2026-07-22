@@ -31,6 +31,7 @@ export function HeroServicesTransition() {
       const whyProgress = Math.min(Math.max((progress - 0.3) * 5, 0), 1);
       const locationsProgress = Math.min(Math.max((progress - 0.5) * 4, 0), 1);
       const reviewsProgress = Math.min(Math.max((progress - 0.75) * 4, 0), 1);
+      const mobile = window.matchMedia("(max-width: 850px)").matches;
 
       const revealOnce = (name: string, sectionProgress: number) => {
         if (sectionProgress <= 0.08) return;
@@ -41,17 +42,17 @@ export function HeroServicesTransition() {
       revealOnce("locations", locationsProgress);
       revealOnce("reviews", reviewsProgress);
       stage.style.setProperty("--services-reveal", `${(1 - servicesProgress) * 100}%`);
-      stage.style.setProperty("--hero-scroll", `${servicesProgress * -22}vh`);
-      stage.style.setProperty("--services-lift", `${(1 - servicesProgress) * 12}vh`);
-      stage.style.setProperty("--services-scroll", `${whyProgress * -8}vh`);
+      stage.style.setProperty("--hero-scroll", `${servicesProgress * (mobile ? -16 : -22)}vh`);
+      stage.style.setProperty("--services-lift", `${(1 - servicesProgress) * (mobile ? 8 : 12)}vh`);
+      stage.style.setProperty("--services-scroll", `${whyProgress * (mobile ? -5 : -8)}vh`);
       stage.style.setProperty("--why-reveal", `${(1 - whyProgress) * 100}%`);
-      stage.style.setProperty("--why-lift", `${(1 - whyProgress) * 12}vh`);
-      stage.style.setProperty("--why-scroll", `${locationsProgress * -18}vh`);
+      stage.style.setProperty("--why-lift", `${(1 - whyProgress) * (mobile ? 8 : 12)}vh`);
+      stage.style.setProperty("--why-scroll", `${locationsProgress * (mobile ? -12 : -18)}vh`);
       stage.style.setProperty("--locations-reveal", `${(1 - locationsProgress) * 100}%`);
-      stage.style.setProperty("--locations-lift", `${(1 - locationsProgress) * 12}vh`);
-      stage.style.setProperty("--locations-scroll", `${reviewsProgress * -18}vh`);
+      stage.style.setProperty("--locations-lift", `${(1 - locationsProgress) * (mobile ? 8 : 12)}vh`);
+      stage.style.setProperty("--locations-scroll", `${reviewsProgress * (mobile ? -12 : -18)}vh`);
       stage.style.setProperty("--reviews-reveal", `${(1 - reviewsProgress) * 100}%`);
-      stage.style.setProperty("--reviews-lift", `${(1 - reviewsProgress) * 12}vh`);
+      stage.style.setProperty("--reviews-lift", `${(1 - reviewsProgress) * (mobile ? 8 : 12)}vh`);
       frameId = 0;
     };
 

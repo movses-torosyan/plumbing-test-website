@@ -56,7 +56,7 @@ export function Footer() {
       </div>
 
       <div className={styles.middle}>
-        <div className={styles.brand}><Image src="/images/plumbing-logo.png" alt="" width={48} height={48} /><span>Your <b>Logo</b></span></div>
+        <div className={styles.brand}><Image src="/images/plumbing-logo.webp" alt="" width={48} height={48} /><span>Your <b>Logo</b></span></div>
         <div className={styles.socials} aria-label="Social media">
           {socials.map((social) => (
             <a key={social.name} href="#" aria-label={social.name} className={`${styles.social} ${social.className}`}>
@@ -77,7 +77,7 @@ export function Footer() {
             aria-label="Visit ZyntrixorX Studio on Facebook"
             title="ZyntrixorX Studio"
           >
-            <Image src="/images/ZX-LOGO.png" alt="ZyntrixorX Studio" width={72} height={32} />
+            <Image src="/images/ZX-LOGO.webp" alt="ZyntrixorX Studio" width={72} height={32} />
           </a>
         </div>
       </div>

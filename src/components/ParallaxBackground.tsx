@@ -5,7 +5,7 @@ export function ParallaxBackground() {
   return (
     <div className={styles.backgroundLayer}>
       <Image
-        src="/images/Plumbing-background-web.png"
+        src="/images/Plumbing-background-web.webp"
         alt="Professional plumber repairing a home water system"
         fill
         priority

@@ -76,7 +76,7 @@
 .floatPipe,
 .floatPipeReverse {
   will-change: transform;
-  animation: float-pipe 6.5s ease-in-out infinite;
+  animation: float-pipe 8s cubic-bezier(.45,0,.55,1) infinite;
 }
 
 .floatPipeReverse {
@@ -181,10 +181,10 @@
 @keyframes float-pipe {
   0%,
   100% {
-    transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -6px, 0);
   }
   50% {
-    transform: translate3d(0, 18px, 0);
+    transform: translate3d(0, 12px, 0);
   }
 }
 

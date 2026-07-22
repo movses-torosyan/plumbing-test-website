@@ -9,11 +9,11 @@ import { useRef } from "react";
 import styles from "./AboutJourney.module.css";
 
 const cards = [
-  { image: "/images/menu-about.png", alt: "Our professional plumbing team", label: "People first" },
-  { image: "/images/why-choose-plumbing-team.png", alt: "Plumbers working carefully in a home", label: "Craftsmanship" },
-  { image: "/images/Plumbing Services.png", alt: "Professional plumbing installation", label: "Precision" },
-  { image: "/images/Leak Detection.png", alt: "Technician performing leak detection", label: "Technology" },
-  { image: "/images/Emergency Services.png", alt: "Emergency plumber ready to help", label: "Always ready" },
+  { image: "/images/menu-about.webp", alt: "Our professional plumbing team", label: "People first" },
+  { image: "/images/why-choose-plumbing-team.webp", alt: "Plumbers working carefully in a home", label: "Craftsmanship" },
+  { image: "/images/Plumbing Services.webp", alt: "Professional plumbing installation", label: "Precision" },
+  { image: "/images/Leak Detection.webp", alt: "Technician performing leak detection", label: "Technology" },
+  { image: "/images/Emergency Services.webp", alt: "Emergency plumber ready to help", label: "Always ready" },
 ];
 
 function StickyAboutCards() {

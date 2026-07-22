@@ -7,12 +7,12 @@ import { TextReveal } from "@/components/ui/cascade-text";
 import styles from "./ServicesSection.module.css";
 
 const services = [
-  { name: "Emergency Services", description: "Rapid 24/7 help for burst pipes, major leaks, flooding, and urgent plumbing failures.", image: "/images/Emergency Services.png" },
-  { name: "Plumbing Services", description: "Reliable repairs, installations, and maintenance for every part of your plumbing system.", image: "/images/Plumbing Services.png" },
-  { name: "Leak Detection", description: "Precise diagnostics that locate hidden leaks quickly and help prevent costly water damage.", image: "/images/Leak Detection.png" },
-  { name: "Water Heater Services", description: "Professional water-heater repair, replacement, and maintenance for dependable hot water.", image: "/images/Water Heater Services.png" },
-  { name: "Pipe Services", description: "Durable pipe repair and replacement solutions designed for lasting performance.", image: "/images/Pipe Services.png" },
-  { name: "Drain Services", description: "Fast, thorough drain cleaning that restores flow and helps stop recurring blockages.", image: "/images/Drain Services.png" },
+  { name: "Emergency Services", description: "Rapid 24/7 help for burst pipes, major leaks, flooding, and urgent plumbing failures.", image: "/images/Emergency Services.webp" },
+  { name: "Plumbing Services", description: "Reliable repairs, installations, and maintenance for every part of your plumbing system.", image: "/images/Plumbing Services.webp" },
+  { name: "Leak Detection", description: "Precise diagnostics that locate hidden leaks quickly and help prevent costly water damage.", image: "/images/Leak Detection.webp" },
+  { name: "Water Heater Services", description: "Professional water-heater repair, replacement, and maintenance for dependable hot water.", image: "/images/Water Heater Services.webp" },
+  { name: "Pipe Services", description: "Durable pipe repair and replacement solutions designed for lasting performance.", image: "/images/Pipe Services.webp" },
+  { name: "Drain Services", description: "Fast, thorough drain cleaning that restores flow and helps stop recurring blockages.", image: "/images/Drain Services.webp" },
 ];
 
 export function ServicesCarousel() {
