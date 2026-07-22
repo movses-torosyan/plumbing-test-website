@@ -266,20 +266,20 @@
 }
 @media (max-width: 760px) {
   .backgroundImage { filter: saturate(.92); }
-  .toolImage { filter: drop-shadow(0 10px 12px rgb(0 0 0 / 28%)); }
+  .toolImage { opacity: 1; filter: drop-shadow(0 10px 12px rgb(0 0 0 / 28%)); }
   .floatPipe,
   .floatPipeReverse { animation-duration: 10s; }
 
   .adjustableWrench {
     right: -4rem;
     width: 145px;
-    opacity: 0.65;
+    opacity: 1;
   }
 
   .pipeWrench {
     left: -3.5rem;
     width: 155px;
-    opacity: 0.65;
+    opacity: 1;
   }
 }
 @media (max-width: 760px) {
